@@ -24,3 +24,5 @@ class Hexagon:
             complex_point = self.complex_center + cmath.rect(self.size, i*math.pi/3+math.pi/6)
             points.append((complex_point.real, complex_point.imag))
         return points
+
+
