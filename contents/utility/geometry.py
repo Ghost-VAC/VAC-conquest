@@ -1,8 +1,9 @@
 import cmath
 import math
 
-class Hexagon():
-    def __init__(self, center:tuple[int,int], size:int):
+
+class Hexagon:
+    def __init__(self, center: tuple[int, int], size: int):
         """
         Create an hexagon using its center and its radius
         :param center: tuple[int,int]
@@ -20,6 +21,6 @@ class Hexagon():
         """
         points = []
         for i in range(6):
-            complexpoint = self.complex_center + cmath.rect(self.size, i*math.pi/3+math.pi/6)
-            points.append((complexpoint.real, complexpoint.imag))
+            complex_point = self.complex_center + cmath.rect(self.size, i*math.pi/3+math.pi/6)
+            points.append((complex_point.real, complex_point.imag))
         return points
