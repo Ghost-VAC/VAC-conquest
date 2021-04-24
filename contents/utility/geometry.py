@@ -2,10 +2,10 @@ import cmath
 import math
 
 class Hexagon():
-    def __init__(self, center:tuple[int,int], size:int):
+    def __init__(self, center:tuple[float,float], size:int):
         self.center = center
         self.x, self.y = center
-        self.complex_center = self.x+self.y*1j
+        self.complex_center = int(self.x)+int(self.y)*1j
         self.size = size
 
     def get_points(self):
