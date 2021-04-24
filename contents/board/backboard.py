@@ -70,6 +70,22 @@ class Case:
         """
         self.center = center
         self.size = size
-        self.type = kind
+        self.kind = kind
         self.occupant = occupant
         self.hexagon = contents.utility.geometry.Hexagon(self.center, self.size)
+
+    def __eq__(self, other):
+        """
+        Defines the equality of two cases
+        :param other: contents.board.backboard.Case
+        :return: Bool
+        """
+        if type(other) != Case:
+            raise ValueError("Can only compare a case to another")
+        return self.center == other.center
+
+    def __str__(self):
+        return str(self.center)+" : "+str(self.kind) + ", " + str(self.occupant)
+
+    def __repr__(self):
+        return str(self.center)+" : "+str(self.kind) + ", " + str(self.occupant)
