@@ -26,3 +26,19 @@ class Hexagon:
         return points
 
 
+def get_vectors(direction, position):
+    dx = -((position[1]%2)-1)
+    if direction == "LEFT":
+        return -1, 0
+    elif direction == "RIGHT":
+        return 1, 0
+    elif direction == "UL":
+        return -1+dx, -1
+    elif direction == "UR":
+        return 0+dx, -1
+    elif direction == "DR":
+        return 0+dx, 1
+    elif direction == "DL":
+        return -1+dx, 1
+    else:
+        raise ValueError("Direction inconnue")

@@ -1,5 +1,6 @@
 import pygame.draw
 
+import contents.utility.geometry
 from contents.utility.constants import *
 
 
@@ -32,7 +33,9 @@ class Soldier(Character):
         self.case.draw()
 
 
-    def move(self,dx, dy):
+    def move(self, direction):
+        dx, dy = contents.utility.geometry.get_vectors(direction, self.position)
+
         if 0 <= self.position[0]+dx < self.board.custom_len()[0] and 0 <= self.position[1]+dy < self.board.custom_len()[1]:
             self.case.occupant = None
             self.case.draw()
