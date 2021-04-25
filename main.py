@@ -21,9 +21,6 @@ if __name__ == "__main__":
 
     pygame.display.flip()
 
-    soldat.move(-5, 0)
-    pygame.display.flip()
-
 
     while True:
         for event in pygame.event.get():
