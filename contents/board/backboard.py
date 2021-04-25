@@ -16,11 +16,10 @@ class Board:
         self.height = height
         self.cases = []
 
-    def draw_board(self, radius, stroke_width=1):
+    def draw_board(self, radius):
         """
         Draws the board on the board
         :param radius: Radius of the hexagon
-        :param stroke_width: Stroke width
         :return: None
         """
 
@@ -55,8 +54,6 @@ class Board:
                 center_x = int(fx(x) + offset) + x_zero
                 center_y = fy(y) + y_zero
                 self.cases[y].append(Case(self, (center_x, center_y), radius))
-
-                #pygame.draw.polygon(self.screen, WHITE, self.cases[y][x].hexagon.get_points(), width=stroke_width)
 
     def custom_len(self):
         return len(self.cases), len(self.cases[0])

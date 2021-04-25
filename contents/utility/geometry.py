@@ -27,7 +27,7 @@ class Hexagon:
 
 
 def get_vectors(direction, position):
-    dx = -((position[1]%2)-1)
+    dx = -((position[1] % 2) - 1)
     if direction == "LEFT":
         return -1, 0
     elif direction == "RIGHT":
@@ -41,4 +41,4 @@ def get_vectors(direction, position):
     elif direction == "DL":
         return -1+dx, 1
     else:
-        raise ValueError("Direction inconnue")
+        raise ValueError("Unknown direction")
