@@ -54,28 +54,42 @@ class Board:
                 offset = (y % 2 == 0) * math.sqrt(3) * (radius / 2)
                 center_x = int(fx(x) + offset) + x_zero
                 center_y = fy(y) + y_zero
-                self.cases[y].append(Case((center_x, center_y), radius))
+                self.cases[y].append(Case(self, (center_x, center_y), radius))
 
-                pygame.draw.polygon(self.screen, WHITE, self.cases[y][x].hexagon.get_points(), width=stroke_width)
+                #pygame.draw.polygon(self.screen, WHITE, self.cases[y][x].hexagon.get_points(), width=stroke_width)
 
     def custom_len(self):
         return len(self.cases), len(self.cases[0])
 
 
 class Case:
-    def __init__(self, center, size, kind=None, occupant=None):
+    def __init__(self, board, center, size, kind=None, occupant=None):
         """
         Case class, made for describing the cases of the board
+        :param board: board
         :param center: tuple[int,int]
         :param size: int
         :param kind:
         :param occupant:
         """
+        self.board = board
         self.center = center
+        self.x = self.center[0]
+        self.y = self.center[1]
         self.size = size
         self.kind = kind
         self.occupant = occupant
         self.hexagon = contents.utility.geometry.Hexagon(self.center, self.size)
+        self.draw()
+
+    def draw(self):
+        pygame.draw.polygon(self.board.screen, BLACK, self.hexagon.get_points(), width=0)
+        pygame.draw.polygon(self.board.screen, WHITE, self.hexagon.get_points(), width=stroke_width)
+        if self.kind:
+            self.kind.draw()
+
+        if self.occupant:
+            self.occupant.draw()
 
     def __eq__(self, other):
         """

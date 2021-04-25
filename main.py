@@ -17,12 +17,13 @@ if __name__ == "__main__":
     board = contents.board.backboard.Board(screen, width, height)
     board.draw_board(20)
 
-    soldat = contents.characters.characters.Soldier(board, (20, 10))
+    soldat = contents.characters.characters.Soldier(board, (5, 0))
 
     pygame.display.flip()
 
-    soldat.move(20,-2)
+    soldat.move(-5, 0)
     pygame.display.flip()
+
 
     while True:
         for event in pygame.event.get():
