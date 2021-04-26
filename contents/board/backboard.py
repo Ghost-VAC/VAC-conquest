@@ -14,6 +14,7 @@ class Board:
         self.screen = screen
         self.width = width
         self.height = height
+        pygame.draw.rect(screen, WHITE, [0, 0, width, width], width=1)
         self.cases = []
 
     def draw_board(self, radius):
@@ -55,7 +56,7 @@ class Board:
                 center_y = fy(y) + y_zero
                 self.cases[y].append(Case(self, (center_x, center_y), radius))
 
-    def custom_len(self):
+    def dimensions(self):
         return len(self.cases), len(self.cases[0])
 
 
