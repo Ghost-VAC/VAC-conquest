@@ -14,7 +14,8 @@ class WelcomePage(QtWidgets.QWidget):
         self.button.clicked.connect(self.start_game)
 
     def start_game(self):
-        self.parent.setCentralWidget(GamePage(self.surface, self.width, self.height))
+        self.parent.currentCentralWidget = GamePage(self.surface, self.width, self.height)
+        self.parent.setCentralWidget(self.parent.currentCentralWidget)
 
 
 class WelcomeButton(QtWidgets.QPushButton):

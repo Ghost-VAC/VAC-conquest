@@ -10,4 +10,5 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setGeometry(x0, y0, width, height)
         self.setWindowTitle("VAC-Conquest")
 
-        self.setCentralWidget(WelcomePage(surface, width, height, self))
+        self.currentCentralWidget = WelcomePage(surface, width, height, self)
+        self.setCentralWidget(self.currentCentralWidget)

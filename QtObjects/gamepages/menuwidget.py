@@ -23,4 +23,4 @@ class MenuWidget(QtWidgets.QWidget):
 
     def sayHello(self):
         print("Move !")
-        #self.surface.soldat.move("RIGHT")
+        self.surface.soldat.move("RIGHT")

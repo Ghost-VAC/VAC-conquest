@@ -3,6 +3,7 @@ import pygame.draw
 import contents.utility.geometry
 from contents.utility.constants import *
 
+from QtObjects.gamepages.gamepage import GamePage
 
 class Character:
     def __init__(self, board, position, life):
@@ -56,6 +57,10 @@ class Soldier(Character):
             self.case = self.board.cases[self.position[1]][self.position[0]]
             self.case.occupant = self
             self.case.draw()
+            print(self.board.screen.window.currentCentralWidget)
+            self.board.screen.window.currentCentralWidget = GamePage(self.board.screen, width=300, height=500)
+            self.board.screen.window.setCentralWidget(self.board.screen.window.currentCentralWidget)
+            print("Hey")
         else:
             raise ValueError("Forbidden move outside of the bord bounds")
 
