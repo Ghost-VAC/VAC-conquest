@@ -41,6 +41,26 @@ class Soldier(Character):
         self.case.occupant = self
         self.case.draw()
 
+    def is_possible_case(self, direction):
+        """
+        Checks if the case is in the board
+        :param direction: The wanted direction
+        :return:
+        """
+        dx, dy = contents.utility.geometry.get_vectors(direction, self.position)
+
+        return 0 <= self.position[0] + dx < self.board.dimensions()[0] \
+            and 0 <= self.position[1] + dy < self.board.dimensions()[1]
+
+    def possible_cases(self):
+        directions = ["UL", "UR", "DL", "DR", "RIGHT", "LEFT"]
+        output = []
+        for direction in directions:
+            dx, dy = contents.utility.geometry.get_vectors(direction, self.position)
+            if self.is_possible_case(direction):
+                output.append((self.position[0] + dx, self.position[1] + dy))
+        return output
+
     def move(self, direction):
         """
         Moves the soldier
@@ -49,8 +69,7 @@ class Soldier(Character):
         """
         dx, dy = contents.utility.geometry.get_vectors(direction, self.position)
 
-        if 0 <= self.position[0]+dx < self.board.dimensions()[0] \
-                and 0 <= self.position[1]+dy < self.board.dimensions()[1]:
+        if self.is_possible_case(direction):
             self.case.occupant = None
             self.case.draw()
             self.position = self.position[0] + dx, self.position[1] + dy

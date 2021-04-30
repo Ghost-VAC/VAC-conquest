@@ -12,6 +12,7 @@ class ImageWidget(QtWidgets.QWidget):
         super(ImageWidget, self).__init__(parent)
         w = surface.get_width()
         h = surface.get_height()
+        self.surface = surface
         self.data = surface.get_buffer().raw
         self.image = QtGui.QImage(self.data, w, h, QtGui.QImage.Format_RGB32)
 
@@ -33,3 +34,4 @@ class ImageWidget(QtWidgets.QWidget):
         :return:
         """
         print(event.x(), event.y())
+        print(self.surface.soldat.possible_cases())
