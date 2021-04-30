@@ -1,34 +1,20 @@
-"""
-
-Main file
-
-"""
-
-import sys
+from PySide6 import QtWidgets
 import pygame
-import contents.board.backboard
-import contents.board.menu
-import contents.characters.characters
+import sys
 
-if __name__ == "__main__":
+from QtObjects.mainwindow import MainWindow
+
+from pygamewindow import PygameWindow
+
+if __name__ == '__main__':
+
+    app = QtWidgets.QApplication(sys.argv)
     pygame.init()
-    size = width, height = 1600, 900
-    screen = pygame.display.set_mode(size)
-    board_size = board_width, board_height = 1300, 900
-    menu_size = menu_width, menu_height = 300, 900
-    board = contents.board.backboard.Board(screen, board_width, board_height)
-    board.draw_board(20)
 
-    menu = contents.board.menu.Menu(screen, board_width, 0, menu_width, menu_height)
-    bouton = contents.board.menu.Button(screen, 1300, 0, 200, 50, "Test")
-    menu.add(bouton)
-    menu.draw()
+    surface = PygameWindow((640, 480))
 
-    soldat = contents.characters.characters.Soldier(board, (1, 1))
+    main_window = MainWindow(surface, 300, 100, 640, 480)
+    surface.window = main_window
+    main_window.show()
 
-    pygame.display.flip()
-
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
+    sys.exit(app.exec_())
