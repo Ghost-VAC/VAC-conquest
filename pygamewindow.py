@@ -15,6 +15,7 @@ class PygameWindow(pygame.Surface):
         self.size = self.width, self.height = 1600, 900
         self.board_size = self.board_width, self.board_height = 1300, 900
         self.board = contents.board.backboard.Board(self, self.board_width, self.board_height)
-        self.board.draw_board(20)
+        self.case_radius = 20
+        self.board.draw_board(self.case_radius)
 
         self.soldat = contents.characters.characters.Soldier(self.board, (1, 1))

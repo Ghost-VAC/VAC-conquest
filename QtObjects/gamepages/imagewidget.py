@@ -1,5 +1,5 @@
 from PySide6 import QtWidgets, QtGui
-
+import math
 
 class ImageWidget(QtWidgets.QWidget):
 
@@ -33,5 +33,18 @@ class ImageWidget(QtWidgets.QWidget):
         :param event:
         :return:
         """
+
+        def fy(y):
+            return round(2*y/(3*r) - 1)
+
+        def fx(x):
+            return round(x/(r*math.sqrt(3)) - 1 - (y%2==0)*0.5)
+
+        r = self.surface.case_radius
         print(event.x(), event.y())
-        print(self.surface.soldat.possible_cases())
+        y = fy(event.y())
+        x = fx(event.x())
+        case = self.surface.board.cases[y][x]
+        print(x,y)
+        if case.occupant:
+            print(case.occupant.possible_cases())

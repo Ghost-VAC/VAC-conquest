@@ -53,7 +53,7 @@ class Board:
             self.cases.append([])
             for x in range(max_x):
                 offset = (y % 2 == 0) * math.sqrt(3) * (radius / 2)
-                center_x = int(fx(x) + offset) + x_zero
+                center_x = fx(x) + int(offset+1) + x_zero
                 center_y = fy(y) + y_zero
                 self.cases[y].append(Case(self, (center_x, center_y), radius))
 
