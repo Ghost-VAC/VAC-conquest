@@ -5,7 +5,12 @@ import contents.characters.characters
 
 
 class PygameWindow(pygame.Surface):
+
     def __init__(self, size):
+        """
+        Creates the pygame window surface
+        :param size: Size of the game board
+        """
         super(PygameWindow, self).__init__(size)
         self.size = self.width, self.height = 1600, 900
         self.board_size = self.board_width, self.board_height = 1300, 900
@@ -13,6 +18,3 @@ class PygameWindow(pygame.Surface):
         self.board.draw_board(20)
 
         self.soldat = contents.characters.characters.Soldier(self.board, (1, 1))
-
-    def update(self):
-        pass

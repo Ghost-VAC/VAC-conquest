@@ -4,6 +4,7 @@ from contents.utility.constants import *
 
 
 class Board:
+
     def __init__(self, screen, width, height):
         """
         Initialization of the game board.
@@ -57,10 +58,15 @@ class Board:
                 self.cases[y].append(Case(self, (center_x, center_y), radius))
 
     def dimensions(self):
+        """
+        Returns the width and the height of the board (in case unit)
+        :return: tuple[int, int]
+        """
         return len(self.cases), len(self.cases[0])
 
 
 class Case:
+
     def __init__(self, board, center, size, kind=None, occupant=None):
         """
         Case class, made for describing the cases of the board
@@ -81,6 +87,10 @@ class Case:
         self.draw()
 
     def draw(self):
+        """
+        Draws the case on the board
+        :return: None
+        """
         pygame.draw.polygon(self.board.screen, BLACK, self.hexagon.get_points(), width=0)
         pygame.draw.polygon(self.board.screen, WHITE, self.hexagon.get_points(), width=stroke_width)
         if self.kind:

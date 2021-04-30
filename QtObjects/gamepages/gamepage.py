@@ -5,7 +5,15 @@ from QtObjects.gamepages.imagewidget import ImageWidget
 
 
 class GamePage(QtWidgets.QSplitter):
+
     def __init__(self, surface, width, height):
+        """
+        Initialize the game page
+        Includes the menu and the game image
+        :param surface: pygame game surface
+        :param width:
+        :param height:
+        """
         super(GamePage, self).__init__()
         self.width = width
         self.height = height
@@ -13,6 +21,3 @@ class GamePage(QtWidgets.QSplitter):
 
         self.image = ImageWidget(surface, self)
         self.menu = MenuWidget(surface, self)
-        #self.CentralWidget.setSizes([640, 150])
-
-        #self.setCentralWidget(self.CentralWidget)
